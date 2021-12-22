@@ -1,5 +1,5 @@
 {
-	"name": "exercism",
+	"name": "vscode-exercism",
 	"displayName": "Exercism",
 	"description": "Makes `exercism submit` more convenient",
 	"version": "0.1.0",
