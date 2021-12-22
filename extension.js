@@ -275,8 +275,7 @@ async function activate(context) {
 			const workspace = vscode.workspace.workspaceFolders[0].uri;
 			const uri =  await vscode.workspace.findFiles('.exercism/config.json');
 			if(uri && uri[0].scheme === 'file') {
-				const json_path = uri[0].path;
-				const raw_data = await fs_promises.readFile(json_path);
+				const raw_data = await vscode.workspace.fs.readFile(uri[0]);
 				const configs = JSON.parse(raw_data);
 				const solution_files = configs.files.solution;
 				let absoult_solution_files = [];
