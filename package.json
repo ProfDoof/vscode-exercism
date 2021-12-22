@@ -2,7 +2,7 @@
 	"name": "exercism",
 	"displayName": "Exercism",
 	"description": "Makes `exercism submit` more convenient",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "bigyue",
 	"engines": {
 		"vscode": "^1.63.0"
