@@ -64,7 +64,7 @@ async function exercism_initialize() {
 			return false;
 		} else if (value === '配置Exercism的位置') {
 			try {
-				filepath = (await vscode.window.showOpenDialog({canSelectMany: false}))[0].path;
+				filepath = (await vscode.window.showOpenDialog({canSelectMany: false}))[0].fsPath;
 			} catch(error) {
 				return false;
 			}
@@ -106,8 +106,8 @@ async function exercism_input_token() {
 async function exercism_input_workspace() {
 	const folderpath = (await vscode.window.showOpenDialog({canSelectMany: false, canSelectFiles: false, canSelectFolders: true}));
 
-	if(folderpath && folderpath[0].path) {
-		let folder = folderpath[0].path;
+	if(folderpath && folderpath[0].fsPath) {
+		let folder = folderpath[0].fsPath;
 		const result = await vscode.window.withProgress({
 			cancellable: false,
 			location: vscode.ProgressLocation.Notification
@@ -280,9 +280,9 @@ async function activate(context) {
 				const solution_files = configs.files.solution;
 				let absoult_solution_files = [];
 				for (let filepath of solution_files) {
-					absoult_solution_files.push(vscode.Uri.joinPath(workspace, filepath).path);
+					absoult_solution_files.push(vscode.Uri.joinPath(workspace, filepath).fsPath);
 				}
-
+				console.log(absoult_solution_files);
 				const submit_command = `exercism submit ${absoult_solution_files.join(' ')}`;
 				vscode.window.withProgress({
 					cancellable: false,
